@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+
+    
+
+             <ToggleButton
+                android:id="@+id/onoffbutton1"
+                android:layout_width="120dp"
+                android:layout_height="120dp"  
+                android:layout_below="@+id/myButton"
+                android:layout_marginLeft="54dp"
+                android:layout_marginTop="5dp" 
+                android:textOn="1"
+                android:textOff="1"
+                android:background="@drawable/btn_style" />
+             
+              <ToggleButton
+                android:id="@+id/onoffbutton2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignLeft="@+id/onoffbutton1"
+                android:layout_below="@+id/myButton"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="5dp" 
+                android:textOn="2"
+                android:textOff="2"
+                android:background="@drawable/btn_style" />
+	          
+		      <ToggleButton
+                android:id="@+id/onoffbutton3"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignLeft="@+id/myButton"
+                android:layout_below="@+id/myButton"
+                android:layout_marginLeft="54dp"
+                android:layout_marginTop="130dp"
+                android:textOn="3"
+                android:textOff="3"  
+                android:background="@drawable/btn_style"/>
+		      
+		     <ToggleButton
+                android:id="@+id/onoffbutton4"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignLeft="@+id/onoffbutton3"
+                android:layout_below="@+id/myButton"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="130dp" 
+                android:textOn="4"
+                android:textOff="4"
+                android:background="@drawable/btn_style" />
+		      
+		      <ToggleButton
+                android:id="@+id/onoffbutton5"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignLeft="@+id/myButton"
+                android:layout_below="@+id/myButton"
+                android:layout_marginLeft="54dp"
+                android:layout_marginTop="255dp"
+                android:textOn="5"
+                android:textOff="5"  
+                android:background="@drawable/btn_style"/>
+		      
+		      <ToggleButton
+                android:id="@+id/onoffbutton6"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignLeft="@+id/onoffbutton5"
+                android:layout_below="@+id/myButton"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="255dp" 
+                android:textOn="6"
+                android:textOff="6"
+                android:background="@drawable/btn_style" />
+		      
+			  <ToggleButton
+                android:id="@+id/onoffbutton7"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignLeft="@+id/myButton"
+                android:layout_below="@+id/myButton"
+                android:layout_marginLeft="54dp"
+                android:layout_marginTop="380dp"
+                android:textOn="7"
+                android:textOff="7"  
+                android:background="@drawable/btn_style"/>
+			  
+			 <ToggleButton
+                android:id="@+id/onoffbutton8"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignLeft="@+id/onoffbutton7"
+                android:layout_below="@+id/myButton"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="380dp" 
+                android:textOn="8"
+                android:textOff="8"
+                android:background="@drawable/btn_style" />
+			  
+
+</RelativeLayout>
