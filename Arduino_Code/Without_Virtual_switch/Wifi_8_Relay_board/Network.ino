@@ -49,8 +49,9 @@ void Scan_Wifi_Networks()
 void Do_Connect()                  // Try to connect to the Found WIFI Network!
 {
 
-
-  ESP.reset();
+delay(500);
+//ESP.wdtDisable();
+digitalWrite(RESET_PIN, LOW);
   
 }
 

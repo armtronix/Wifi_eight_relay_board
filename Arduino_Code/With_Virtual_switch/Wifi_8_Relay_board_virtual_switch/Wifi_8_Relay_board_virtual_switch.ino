@@ -94,7 +94,7 @@ int iotMode=0; //IOT mode: 0 = Web control, 1 = MQTT (No const since it can chan
 #define RESTARTDELAY 3 //minimal time in sec for button press to reset
 #define HUMANPRESSDELAY 50 // the delay in ms untill the press should be handled as a normal push by human. Button debounce. !!! Needs to be less than RESTARTDELAY & RESETDELAY!!!
 #define RESETDELAY 20 //Minimal time in sec for button press to reset all settings and boot to config mode
-
+#define RESET_PIN 16
 //##### Object instances ##### 
 MDNSResponder mdns;
 ESP8266WebServer server(80);
@@ -132,6 +132,8 @@ int output_pin_status_05, output_pin_status_09, output_pin_status_06, output_pin
 void setup() {
   Serial.begin(115200);
   delay(10);
+  pinMode(RESET_PIN, OUTPUT); 
+  digitalWrite(RESET_PIN, HIGH);
   // prepare GPIO2
   pinMode(OUTPIN_04, OUTPUT);
   pinMode(OUTPIN_12, OUTPUT);
