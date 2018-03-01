@@ -1,0 +1,143 @@
+bool loadConfig() {
+  File configFile = SPIFFS.open("/config.json", "r");
+  if (!configFile) {
+    Serial.println("Failed to open config file");
+    return false;
+  }
+
+  size_t size = configFile.size();
+  if (size > 1024) {
+    Serial.println("Config file size is too large");
+    return false;
+  }
+
+  // Allocate a buffer to store contents of the file.
+  std::unique_ptr<char[]> buf(new char[size]);
+
+  // We don't use String here because ArduinoJson library requires the input
+  // buffer to be mutable. If you don't use ArduinoJson, you may as well
+  // use configFile.readString instead.
+  configFile.readBytes(buf.get(), size);
+
+  StaticJsonBuffer<1024> jsonBuffer;
+  JsonObject& json = jsonBuffer.parseObject(buf.get());
+
+  if (!json.success()) {
+    Serial.println("Failed to parse config file");
+    return false;
+  }
+
+  int otaFlagC = json["otaFlag"];
+  String esidC = json["esid"];
+  String epassC = json["epass"];
+  int iotModeC = json["iotMode"];
+  String pubTopicC = json["pubTopic"];
+  String subTopicC = json["subTopic"];
+  String mqttServerC = json["mqttServer"];
+  String firstNameC = json["firstName"];
+  String secondNameC = json["secondName"];
+  String thirdNameC = json["thirdName"];
+  String fourthNameC = json["fourthName"];
+  String fifthNameC = json["fifthName"];
+  String sixthNameC = json["sixthName"];
+  String seventhNameC = json["seventhName"];
+  String eighthNameC = json["eighthName"];
+
+
+
+
+  // Real world application would store these values in some variables for
+  // later use.
+  otaFlag = otaFlagC;
+  esid = esidC;
+  epass = epassC;
+  iotMode = iotModeC;
+  pubTopic = pubTopicC;
+  subTopic = subTopicC;
+  mqttServer = mqttServerC;
+  firstName = firstNameC;
+  secondName = secondNameC;
+  thirdName = thirdNameC;
+  fourthName = fourthNameC;
+  fifthName = fifthNameC;
+  sixthName = sixthNameC;
+  seventhName = seventhNameC;
+  eighthName = eighthNameC;
+  
+  Serial.print("otaFlag: "); 
+  Serial.println(otaFlag);
+  Serial.print("esid: ");
+  Serial.println(esid);
+  Serial.print("epass: ");
+  Serial.println(epass);
+  Serial.print("iotMode: ");
+  Serial.println(iotMode);
+  Serial.print("pubTopic: ");
+  Serial.println(pubTopic);
+  Serial.print("subTopic: ");
+  Serial.println(subTopic);
+  Serial.print("mqttServer: ");
+  Serial.println(mqttServer);
+  Serial.print("esid: ");
+  Serial.println(esid);
+
+  Serial.print("firstName: ");
+  Serial.println(firstName);
+  Serial.print("secondName: ");
+  Serial.println(secondName);
+  Serial.print("thirdName: ");
+  Serial.println(thirdName);
+  Serial.print("fourthName: ");
+  Serial.println(fourthName);
+  Serial.print("fifthName: ");
+  Serial.println(fifthName);
+  Serial.print("sixthName: ");
+  Serial.println(sixthName);
+  Serial.print("seventhName: ");
+  Serial.println(seventhName);
+  Serial.print("eighthName: ");
+  Serial.println(eighthName);
+  return true;
+}
+
+bool saveConfig() {
+  StaticJsonBuffer<1024> jsonBuffer;
+  JsonObject& json = jsonBuffer.createObject();
+  json["otaFlag"] = otaFlag;
+  json["esid"] = esid;
+  json["epass"] = epass;
+  json["iotMode"] = iotMode;
+  json["pubTopic"] = pubTopic;
+  json["subTopic"] = subTopic;
+  json["mqttServer"] = mqttServer;
+  json["firstName"] = firstName;
+  json["secondName"] = secondName;
+  json["thirdName"] = thirdName;
+  json["fourthName"] = fourthName;
+  json["fifthName"] = fifthName;
+  json["sixthName"] = sixthName;
+  json["seventhName"] = seventhName;
+  json["eighthName"] = eighthName;
+
+  File configFile = SPIFFS.open("/config.json", "w");
+  if (!configFile) {
+    Serial.println("Failed to open config file for writing");
+    return false;
+  }
+
+  json.printTo(configFile);
+  return true;
+}
+
+
+void setOtaFlag(int intOta){
+  otaFlag=intOta;
+  saveConfig();
+  yield();
+}
+
+bool clearConfig(){
+    Debugln("DEBUG: In config clear!");
+    return SPIFFS.format();  
+}
+

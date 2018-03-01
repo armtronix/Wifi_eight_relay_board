@@ -31,6 +31,7 @@ String serialReceived1, serialReceived2, serialReceived3, serialReceived4, seria
 void setup() {
 
    Serial.begin(115200);
+   Serial.println("Wifi Eight Relay Board Ver0.2"); //added on 1-03-18
    pinMode(Relay1, OUTPUT); //relay1 output
    pinMode(Relay2, OUTPUT); //relay2 output
    pinMode(Relay3, OUTPUT); //relay3 output
