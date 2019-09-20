@@ -32,14 +32,14 @@ void setup() {
 
    Serial.begin(115200);
    Serial.println("Wifi Eight Relay Board Ver0.2"); //added on 1-03-18
-   pinMode(Relay1, OUTPUT); //relay1 output
-   pinMode(Relay2, OUTPUT); //relay2 output
-   pinMode(Relay3, OUTPUT); //relay3 output
-   pinMode(Relay4, OUTPUT); //relay4 output
-   pinMode(Relay5, OUTPUT); //relay5 output
-   pinMode(Relay6, OUTPUT); //relay6 output
-   pinMode(Relay7, OUTPUT); //relay7 output
-   pinMode(Relay8, OUTPUT); //relay8 output
+   pinMode(Relay1, OUTPUT); //hpw1 output
+   pinMode(Relay2, OUTPUT); //hpw2 output
+   pinMode(Relay3, OUTPUT); //vaccum1 output
+   pinMode(Relay4, OUTPUT); //vaccum2 output
+   pinMode(Relay5, OUTPUT); // foam1 output
+   pinMode(Relay6, OUTPUT); //foam2 output
+   pinMode(Relay7, OUTPUT); //blower1 output
+   pinMode(Relay8, OUTPUT); //blower2 output
 
    pinMode(SWITCH_INPIN1, INPUT); //manual switch 1 input
    pinMode(SWITCH_INPIN2, INPUT); //manual switch 2 input
@@ -62,13 +62,14 @@ void loop() {
                   {
             serialReceived1 = serialReceived;
         //Serial.println(serialReceived1.substring(0,33));
-                  }  
+
           if(serialReceived.substring(0,33) == "R_1 switched via web request to 0")
-                  {
-            serialReceived1 = serialReceived;
+                  {// check if delay has timed out
+  if (delayRunning && ((millis(10000) - delayStart) >= DELAY_TIME)) {
+    delayRunning = false; // finished delay -- single shot, once only
+    digitalWrite(led, LOW); //            serialReceived1 = serialReceived;
        
-                  }   
-                  
+                  }     
            if(serialReceived.substring(0,33) == "R_2 switched via web request to 1")
                   {
             serialReceived2 = serialReceived;
